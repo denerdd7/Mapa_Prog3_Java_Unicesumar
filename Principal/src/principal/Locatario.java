@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
  * @author Dener
  */
 public class Locatario {
-    private String nome, cpf, endereco;
+    private String nome, cpf, telefone;
     private int anoNascimento;
 
     public String getNome() {
@@ -31,12 +31,12 @@ public class Locatario {
         this.cpf = cpf;
     }
 
-    public String getEndereco() {
-        return endereco;
+    public String getTelefone() {
+        return telefone;
     }
 
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
     }
 
     public int getAnoNascimento() {
@@ -60,7 +60,7 @@ public class Locatario {
     public void cadastrarLocatario(){
         this.setNome(JOptionPane.showInputDialog("Qual o nome do Locatário?"));
         this.setCpf(JOptionPane.showInputDialog("Qual o CPF?"));
-        this.setEndereco(JOptionPane.showInputDialog("Qual o Endereço?"));
+        this.setTelefone(JOptionPane.showInputDialog("Qual o Telefone?"));
         this.setAnoNascimento(Integer.parseInt(JOptionPane.showInputDialog("Qual o ano de nascimento?")));
     }    
 }
