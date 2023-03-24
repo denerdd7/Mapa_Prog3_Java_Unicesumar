@@ -9,10 +9,22 @@ package principal;
  * @author Dener
  */
 public class Locacao {
-    Locatario locatario;
-    Quadra quadra;
-    Integer tempoMinuto;
-    char necessitaEquipamento;
+    private Locatario locatario;
+    private Quadra quadra;
+    private int tempoMinuto;
+    private char necessitaEquipamento;
+    
+    public double calcularLocacao(){
+        return 
+    }
+    
+    public void mostrarResumoLocacao(){
+        
+    }
+    
+    public void cadastrarLocacao(){
+        
+    }
 
     public Locatario getLocatario() {
         return locatario;
@@ -30,11 +42,11 @@ public class Locacao {
         this.quadra = quadra;
     }
 
-    public Integer getTempoMinuto() {
+    public int getTempoMinuto() {
         return tempoMinuto;
     }
 
-    public void setTempoMinuto(Integer tempoMinuto) {
+    public void setTempoMinuto(int tempoMinuto) {
         this.tempoMinuto = tempoMinuto;
     }
 

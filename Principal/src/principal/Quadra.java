@@ -4,27 +4,29 @@
  */
 package principal;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Dener
  */
 public class Quadra {
-    Integer nome, valorMinuto;
-    String tipoDaQuadra;
+    private int valorMinuto;
+    private String nome, tipoDaQuadra;
 
-    public Integer getNome() {
+    public String getNome() {
         return nome;
     }
 
-    public void setNome(Integer nome) {
+    public void setNome(String nome) {
         this.nome = nome;
     }
 
-    public Integer getValorMinuto() {
+    public int getValorMinuto() {
         return valorMinuto;
     }
 
-    public void setValorMinuto(Integer valorMinuto) {
+    public void setValorMinuto(int valorMinuto) {
         this.valorMinuto = valorMinuto;
     }
 
@@ -35,4 +37,10 @@ public class Quadra {
     public void setTipoDaQuadra(String tipoDaQuadra) {
         this.tipoDaQuadra = tipoDaQuadra;
     }
+    
+    public void cadastrarQuadra(){
+        this.setNome(JOptionPane.showInputDialog("Qual o nome da Quadra?"));
+        this.setTipoDaQuadra(JOptionPane.showInputDialog("Qual o tipo da Quadra?"));
+        this.setValorMinuto(Integer.parseInt(JOptionPane.showInputDialog("Qual o valor do minuto?")));
+    }    
 }
