@@ -11,26 +11,11 @@ import javax.swing.JOptionPane;
  * @author Dener
  */
 public class Locacao {
-    private Locatario locatario;
-    private Quadra quadra;
     private int tempoMinuto;
     private char necessitaEquipamento;
     
-    public Locatario getLocatario() {
-        return locatario;
-    }
-
-    public void setLocatario(Locatario locatario) {
-        this.locatario = locatario;
-    }
-
-    public Quadra getQuadra() {
-        return quadra;
-    }
-
-    public void setQuadra(Quadra quadra) {
-        this.quadra = quadra;
-    }
+    Locatario locatario = new Locatario();
+    Quadra quadra = new Quadra();
 
     public int getTempoMinuto() {
         return tempoMinuto;
@@ -47,9 +32,35 @@ public class Locacao {
     public void setNecessitaEquipamento(char necessitaEquipamento) {
         this.necessitaEquipamento = necessitaEquipamento;
     }
+
+    public Locatario getLocatario() {
+        return locatario;
+    }
+
+    public void setLocatario(Locatario locatario) {
+        this.locatario = locatario;
+    }
+
+    public Quadra getQuadra() {
+        return quadra;
+    }
+
+    public void setQuadra(Quadra quadra) {
+        this.quadra = quadra;
+    }
+    
     
     public double calcularLocacao(){
+        if(getTempoMinuto() >= 120){            
+            getQuadra().setValorMinuto((int) (getQuadra().getValorMinuto() - (getQuadra().getValorMinuto() * (10.0/100))));            
+        }
+       
         double valorLocacao = getTempoMinuto() * getQuadra().getValorMinuto();
+        
+        if ("s".equals(String.valueOf(getNecessitaEquipamento()))){
+            valorLocacao = valorLocacao + 50;
+        }        
+                
         return valorLocacao;
     }
     
@@ -75,7 +86,10 @@ public class Locacao {
         quadra.cadastrarQuadra();
         locatario.cadastrarLocatario();
         locatario.verificarMaiorIdade();
-        this.setTempoMinuto(Integer.parseInt(JOptionPane.showInputDialog("Qual o valor do tempo em minutos?")));
+        if(!locatario.verificarMaiorIdade()){
+            System.exit(0);
+        }
+        this.setTempoMinuto(Integer.parseInt(JOptionPane.showInputDialog("Quanto tempo vai usar a quadra em minutos?")));
         this.setNecessitaEquipamento(JOptionPane.showInputDialog("Necessita equipamento? (S)Sim, (N)Não:").charAt(0));
         mostrarResumoLocacao();
     }    
