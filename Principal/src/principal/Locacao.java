@@ -14,8 +14,8 @@ public class Locacao {
     private int tempoMinuto;
     private char necessitaEquipamento;
     
-    Locatario locatario = new Locatario();
-    Quadra quadra = new Quadra();
+    private Locatario locatario = new Locatario();
+    private Quadra quadra = new Quadra();
 
     public int getTempoMinuto() {
         return tempoMinuto;
@@ -44,18 +44,17 @@ public class Locacao {
     public Quadra getQuadra() {
         return quadra;
     }
-
+    
     public void setQuadra(Quadra quadra) {
         this.quadra = quadra;
-    }
-    
+    }    
     
     public double calcularLocacao(){
-        if(getTempoMinuto() >= 120){            
-            getQuadra().setValorMinuto((int) (getQuadra().getValorMinuto() - (getQuadra().getValorMinuto() * (10.0/100))));            
+        if(getTempoMinuto() > 120){            
+            quadra.setValorMinuto((int) (quadra.getValorMinuto() - (quadra.getValorMinuto() * (10.0/100))));            
         }
        
-        double valorLocacao = getTempoMinuto() * getQuadra().getValorMinuto();
+        double valorLocacao = getTempoMinuto() * quadra.getValorMinuto();
         
         if ("s".equals(String.valueOf(getNecessitaEquipamento()))){
             valorLocacao = valorLocacao + 50;
@@ -87,6 +86,7 @@ public class Locacao {
         locatario.cadastrarLocatario();
         locatario.verificarMaiorIdade();
         if(!locatario.verificarMaiorIdade()){
+            JOptionPane.showMessageDialog(null,"O programa será encerrado! \nMotivo: Locatário menor de idade");
             System.exit(0);
         }
         this.setTempoMinuto(Integer.parseInt(JOptionPane.showInputDialog("Quanto tempo vai usar a quadra em minutos?")));

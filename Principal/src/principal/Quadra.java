@@ -27,7 +27,6 @@ public class Quadra {
     }
 
     public void setValorMinuto(int valorMinuto) {
-        System.out.println("Cheguei aqui -----" + Integer.toString(valorMinuto));
         this.valorMinuto = valorMinuto;
     }
 
